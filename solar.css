@@ -903,6 +903,10 @@ section {
     word-spacing: -3px;
 }
 
+.black {
+	color: #313131 !important;
+}
+
 .head-description {
 	position: relative;
 	display: block;
@@ -1080,6 +1084,108 @@ footer {
 	justify-content: center;
 	float: right;
 	width: auto;
+	height: auto;
+	padding: 0;
+	margin: 0;
+}
+
+.numbers-stats {
+	position: relative;
+	display: block;
+	float: left;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0;
+}
+
+.number-icon {
+	position: relative;
+	display: block;
+	float: left;
+	width: 25%;
+	height: auto;
+	padding: 5% 0;
+	margin: 0;
+}
+
+.number-img {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	float: left;
+	width: 100%;
+	height: auto;
+}
+
+.number-img img {
+	width: 80px;
+	height: auto;
+	vertical-align: middle;
+}
+
+.number-name {
+	display: block;
+	float: left;
+	width: 100%;
+	height: auto;
+	color: #ec2029;
+	font-size: 40px;
+	font-weight: 700;
+	margin: 15px 0 0 0;
+	text-align: center;
+}
+
+.number-description {
+	position: relative;
+	display: block;
+	float: left;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0;
+	color: #000;
+	font-size: 18px;
+	font-weight: 400;
+	text-align: center;
+}
+
+.foot-action {
+	position: relative;
+	display: block;
+	float: left;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0 0 100px 0;
+}
+
+.action-text {
+	position: relative;
+	display: block;
+	float: left;
+	width: 50%;
+	height: auto;
+	padding: 0;
+	margin: 0;
+}
+
+.action-name {
+	position: relative;
+	display: block;
+	float: left;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0;
+}
+
+.action-description {
+	position: relative;
+	display: block;
+	float: left;
+	width: 100%;
 	height: auto;
 	padding: 0;
 	margin: 0;
