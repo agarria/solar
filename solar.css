@@ -14,7 +14,9 @@ body {
     min-height: 100%;
     padding: 0;
     margin: 0;
-    background: #151515;
+	background: #151515;
+	overflow-y: auto;
+	overflow-x: hidden;
     user-select: none;
     -webkit-user-select: none;
     scroll-behavior: smooth;
@@ -1189,4 +1191,55 @@ footer {
 	height: auto;
 	padding: 0;
 	margin: 0;
+}
+
+@media only screen and (max-width: 1000px) {
+
+	nav {
+		overflow: hidden;
+	}
+
+	footer {
+		display: none;
+	}
+
+	header {
+		padding: 100px 5% 0 5%;
+	}
+
+	.heading {
+		font-size: 30px;
+		line-height: 30px;
+		letter-spacing: -1px;
+		word-spacing: -1px;
+	}
+
+	.description span {
+		font-size: 10px;
+	}
+
+	.zip {
+		width: 100%;
+	}
+
+	.zip input {
+		width: 55%;
+		padding: 0 10px;
+		margin: 0;
+		text-align: center;
+		font-size: 16px;
+	}
+
+	.zip .search {
+		width: 45%;
+		height: 60px;
+		padding: 0;
+		font-size: 16px;
+	}
+
+	main {
+		display: none;
+	}
+
+
 }
