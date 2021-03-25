@@ -17,9 +17,9 @@
     <meta property="og:site_name" content="Solar">
     <meta property="og:description" content="Lower your electric bill, increase your property value, reduce your tax liability, and help the environment.">
     <meta property="og:image" content="thumbnail.png">
-    <link rel="stylesheet" type="text/css" href="solar.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" type="text/css" href="solar.css">
 </head>
 <body>
     <nav>
@@ -266,26 +266,13 @@
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script type="text/javascript">
+<script>
     AOS.init();
 
-    var slider = document.getElementById("slider");
-    var output = document.getElementById("value");
-    output.innerHTML = slider.value;
 
-    slider.oninput = function() {
-        output.innerHTML = this.value;
-    }
 
-    $(".search").click(function(){
-        $(".overlay").addClass("show");
-    });
+    $('document').ready(function() {
 
-    $(".foot-previous").click(function(){
-        $(".overlay").removeClass("show");
-    });
-
-    $(function() {
         var nav = $("nav");
 
         $(window).scroll(function() {    
@@ -295,6 +282,22 @@
             } else {
                 nav.removeClass("bg");
             }
+        });
+
+        var slider = document.getElementById("slider");
+        var output = document.getElementById("value");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+
+        $(".search").click(function(){
+            $(".overlay").addClass("show");
+        });
+
+        $(".foot-previous").click(function(){
+            $(".overlay").removeClass("show");
         });
 
     });
