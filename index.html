@@ -66,7 +66,7 @@
                 <div class="container tab">
                     <span class="question-name">Where is your<br>home located?</span>
                     <div class="question-input">
-                        <input class="big" type="text" placeholder="&#xf124; Home Address">
+                        <input id="autocomplete" class="big" type="text" placeholder="&#xf124; Home Address">
                         <span class="helper">We will look up utility rates & any applicable rebates for your estimate</span>
                     </div>
                 </div>
@@ -113,9 +113,11 @@
                 <div class="container tab">
                     <span class="question-name">Fill in your<br>personal info</span>
                     <div class="question-input question-form">
-                        <input class="big big-100" type="text" placeholder="&#xf007; Full Name">
-                        <input class="big big-50" type="number" placeholder="&#xf095; Phone">
-                        <input class="big big-50" type="email" placeholder="&#xf0e0; Email">
+                        <input id="name" class="big big-100" type="text" placeholder="&#xf007; Full Name">
+                        <input id="phone" class="big big-50" type="number" placeholder="&#xf095; Phone">
+                        <input id="email" class="big big-50" type="email" placeholder="&#xf0e0; Email">
+                        <input id="leadid_tcpa_disclosure" type="radio">
+                        <label for="leadid_tcpa_disclosure">I am the owner and/or have authority with respect to this property</label>
                         <span class="helper">We have multiple installers in your area who share pricing but they require us to verify you are a real homeowner and not a spammer, competitor or bot</span>
                     </div>
                 </div>
@@ -124,7 +126,9 @@
                 <span id="back" onclick="next(-1)" class="foot-previous">Back</span> 
                 <span id="next" onclick="next(1)" class="foot-next">Next</span> 
             </div>
+            <input id="leadid_token" name="universal_leadid" type="hidden" value=""/>
         </form>
+        <noscript><img src='//create.leadid.com/noscript.gif?lac=b4136bf0-2bce-fbc8-2e97-6d2d22f3cf46&lck=1955e8b5-0333-83b4-1c5e-fb1e3a0707fb&snippet_version=2' /></noscript>
     </div>
     <main>
         <section>
@@ -350,6 +354,23 @@
             document.getElementsByClassName("step")[current].className += " finish";
         }
         return valid;
+    }
+
+    (function() {
+        var s = document.createElement('script');
+        s.id = 'LeadiDscript_campaign';
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = '//create.lidstatic.com/campaign/1955e8b5-0333-83b4-1c5e-fb1e3a0707fb.js?snippet_version=2';
+        var LeadiDscript = document.getElementById('LeadiDscript');
+        LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
+    })();
+
+    function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById('autocomplete'), { types: ['geocode'] });
+        autocomplete.setFields(['address_component']);
+        autocomplete.addListener('place_changed', fillInAddress);
     }
 
 </script>
