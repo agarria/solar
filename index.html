@@ -50,8 +50,11 @@
             <div class="modal-head">
                 <div class="container">
                     <span class="progress-label">Question 1 of 4</span>
-                    <div class="progress-bar">
-                        <span class="progress-line"></span>
+                    <div class="progress">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
                     </div>
                 </div>
             </div>
@@ -74,38 +77,43 @@
                     <span class="question-name">Select the status of your house</span>
                     <div class="question-input">
                         <div class="boxes">
-                            <div class="box">
+                            <label id="unshaded" class="box" for="unshaded_box">
                                 <div class="container">
                                     <span class="box-icon">
                                         <img src="unshaded.png">
                                     </span>
                                     <span class="box-name">Unshaded</span>
                                 </div>
-                            </div>
-                            <div class="box box-selected">
+                                <input id="unshaded_box" type="radio" name="housetype"  onchange="activateBox(this);">
+                            </label>
+                            <label id="shaded" class="box" for="shaded_box">
                                 <div class="container">
                                     <span class="box-icon">
                                         <img src="shaded.png">
                                     </span>
                                     <span class="box-name">Shaded</span>
                                 </div>
-                            </div>
-                            <div class="box">
+                                <input id="shaded_box" type="radio" name="housetype"  onchange="activateBox(this);">
+                            </label>
+                            <label id="some" class="box" for="some_box" >
                                 <div class="container">
                                     <span class="box-icon">
                                         <img src="some-shaded.png">
                                     </span>
                                     <span class="box-name">Some</span>
                                 </div>
-                            </div>
-                            <div class="box">
+                                <input id="some_box" type="radio" name="housetype" onchange="activateBox(this);">
+                            </label>
+                            <label id="uncertain" class="box" for="uncertain_box">
                                 <div class="container">
                                     <span class="box-icon">
                                         <img src="uncertain.png">
                                     </span>
                                     <span class="box-name">Uncertain</span>
                                 </div>
-                            </div>
+                                <input id="uncertain_box" type="radio" name="housetype"  onchange="activateBox(this);">
+                            </label>
+                            <input id="housetype" type="text">
                         </div>
                         <span class="helper">We will look up if there are possible changes in your surroundings</span>
                     </div>
@@ -113,11 +121,14 @@
                 <div class="container tab">
                     <span class="question-name">Fill in your<br>personal info</span>
                     <div class="question-input question-form">
-                        <input id="name" class="big big-100" type="text" placeholder="&#xf007; Full Name">
-                        <input id="phone" class="big big-50" type="number" placeholder="&#xf095; Phone">
-                        <input id="email" class="big big-50" type="email" placeholder="&#xf0e0; Email">
-                        <input id="leadid_tcpa_disclosure" type="radio">
-                        <label for="leadid_tcpa_disclosure">I am the owner and/or have authority with respect to this property</label>
+                        <input id="firstname" class="big big-50" type="text" placeholder="&#xf007; First Name">
+                        <input id="firstname" class="big big-50" type="text" placeholder="Last Name">
+                        <input id="phone" class="big big-100" type="number" placeholder="&#xf095; Phone">
+                        <input id="email" class="big big-100" type="email" placeholder="&#xf0e0; Email">
+                        <div class="radio">
+                            <input id="leadid_tcpa_disclosure" type="radio">
+                            <label for="leadid_tcpa_disclosure" class="helper">I am the owner and/or have authority with respect to this property</label>
+                        </div>
                         <span class="helper">We have multiple installers in your area who share pricing but they require us to verify you are a real homeowner and not a spammer, competitor or bot</span>
                     </div>
                 </div>
@@ -286,7 +297,50 @@
             $(".overlay").addClass("show");
         });
 
+        $("#autocomplete").keyup(function(){
+            $(this).removeClass("invalid");
+        });
+
+
+        $("#unshaded, #shaded, #some, #uncertain").click(function($event) {
+            $("#step_1").css('display','none');
+            $("#step_2").css('display','block');
+            $("#p_bar").css('width','20%');
+
+            if ($event.currentTarget.id == 'unshaded'){
+                $("#housetype").val("Unshaded");
+            }
+            if ($event.currentTarget.id == 'shaded'){
+                $("#housetype").val("Shaded");
+            }
+            if ($event.currentTarget.id == 'some'){
+                $("#housetype").val("Some Shaded");
+            }
+            if ($event.currentTarget.id == 'uncertain'){
+                $("#housetype").val("Uncertain");
+            }
+        });
+
+        $("#unshaded_box").change(function(){
+            
+            if ($(this).is(":checked")) {
+                $(this).parent().addClass("box-active");
+            } else {
+                $(this).parent().removeClass("box-active");
+
+                return false;
+            }
+        });
+
     });
+
+    function activateBox(e){
+        var checkBoxes = document.getElementsByClassName('box');
+        for(var i=0;i<checkBoxes.length;i++){
+            checkBoxes[i].classList.remove('box-active');
+        }
+        e.parentNode.classList.add('box-active');
+    }
 
 
     var current = 0;
@@ -314,7 +368,7 @@
 
     function bar(n) {
         // This function removes the "active" class of all steps...
-        var i, x = document.getElementsByClassName("step");
+        var i, x = document.getElementsByClassName("dot");
         for (i = 0; i < x.length; i++) {
             x[i].className = x[i].className.replace(" active", "");
         }
@@ -351,7 +405,7 @@
             }
         }
         if (valid) {
-            document.getElementsByClassName("step")[current].className += " finish";
+            document.getElementsByClassName("dot")[current].className += " finish";
         }
         return valid;
     }

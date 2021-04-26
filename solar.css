@@ -40,6 +40,44 @@ body {
     background: #fff;
 }
 
+.invalid {
+	border: 1px solid #ed1d26 !important;
+}
+
+.invalid::-webkit-input-placeholder {
+  color: #ed1d26;
+}
+
+.invalid:-ms-input-placeholder {
+  color: #ed1d26;
+}
+
+.invalid::placeholder {
+  color: #ed1d26;
+}
+
+.radio {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	float: left;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+.radio input {
+	margin: 0 10px 0 0;
+}
+
+.radio .helper {
+	text-align: left;
+	margin: 0 !important;
+}
+
 nav {
 	position: fixed;
 	display: block;
@@ -185,17 +223,36 @@ nav {
 	text-align: center;
 }
 
-.progress-bar {
+.progress {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	float: left;
+	width: 100%;
+	height: auto;
+	margin: 15px 0 0 0;
+	outline: none;
+	overflow: hidden;
+}
+
+.dot {
 	position: relative;
 	display: block;
 	float: left;
-	width: 60%;
-	height: 15px;
-	margin: 15px 20% 0 20%;
+	width: 20px;
+	height: 20px;
+	margin: 0 20px 0 0;
 	background: #eee;
-	outline: none;
-	overflow: hidden;
-	border-radius: 5px;
+	border-radius: 50%;
+}
+
+.dot:last-child {
+	margin: 0;
+}
+
+.active {
+    background: #ed1d26;
 }
 
 .progress-line {
@@ -273,17 +330,42 @@ nav {
 	background: #eee;
 	border-radius: 5px;
 	cursor: pointer;
+	border: 1px solid transparent;
 }
 
-.box-selected {
+#housetype {
+	display: none;
+}
+
+.box input {
+	display: none;
+}
+
+.invalid-box {
+	border: 1px solid #ed1d26;
+}
+
+.box:hover {
 	background: #ed1d26;
 }
 
-.box-selected .box-icon {
+.box:hover .box-icon {
 	filter: invert(100%);
 }
 
-.box-selected .box-name {
+.box:hover .box-name {
+	color: #fff;
+}
+
+.box-active {
+	background: #ed1d26;
+}
+
+.box-active .box-icon {
+	filter: invert(100%);
+}
+
+.box-active .box-name {
 	color: #fff;
 }
 
@@ -327,8 +409,9 @@ nav {
 	font-size: 16px;
 	font-weight: 500;
 	border-radius: 5px;
-	border: 0;
 	outline: 0;
+	border: 1px solid transparent;
+	transition: all .3s ease;
 }
 
 .big-100 {
@@ -346,8 +429,8 @@ nav {
 	margin: 40px 20% 0 20%;
 }
 
-.question-form input:nth-child(3) {
-	margin: 0 0 0 10px;
+.question-form input:nth-child(2) {
+	margin: 0 0 20px 10px;
 }
 
 .question-form .helper {
