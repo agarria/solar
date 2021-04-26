@@ -122,7 +122,7 @@
                     <span class="question-name">Fill in your<br>personal info</span>
                     <div class="question-input question-form">
                         <input id="firstname" class="big big-50" type="text" placeholder="&#xf007; First Name">
-                        <input id="firstname" class="big big-50" type="text" placeholder="Last Name">
+                        <input id="lastname" class="big big-50" type="text" placeholder="Last Name">
                         <input id="phone" class="big big-100" type="number" placeholder="&#xf095; Phone">
                         <input id="email" class="big big-100" type="email" placeholder="&#xf0e0; Email">
                         <div class="radio">
@@ -297,7 +297,7 @@
             $(".overlay").addClass("show");
         });
 
-        $("#autocomplete").keyup(function(){
+        $("#autocomplete,#firstname,#lastname,#phone,#email").keyup(function(){
             $(this).removeClass("invalid");
         });
 
